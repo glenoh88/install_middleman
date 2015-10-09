@@ -44,3 +44,30 @@ end
 execute 'Install ruby' do
   command 'apt-get -y install apache2'
 end
+
+#start apache
+service 'apache2' do
+  supports :status => true
+  action [:enable, :start]
+end
+
+#enable some apache modules
+execute 'a2enmode' do
+  command 'a2enmide proxy_http rewrite '
+end
+
+#configure blog.conf
+template '/etc/apache2/sites-enabled/blog.conf' do
+  source 'blog.conf.erb'
+end
+
+#delete /etc/apache2/sites-enabled/000-default.conf
+file '/etc/apache2/sites-enabled/000-default.conf' do
+  action :delete
+end
+
+#restart apache
+service 'apache2' do
+  supports :status => true
+  action :restart
+end
