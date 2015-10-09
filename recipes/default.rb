@@ -53,7 +53,7 @@ end
 
 #enable some apache modules
 execute 'a2enmode' do
-  command 'a2enmide proxy_http rewrite '
+  command 'a2enmode proxy_http rewrite '
 end
 
 #configure blog.conf
