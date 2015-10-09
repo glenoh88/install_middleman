@@ -57,8 +57,13 @@ execute 'a2enmod' do
 end
 
 #configure blog.conf
-template '/etc/apache2/sites-enabled/blog.conf' do
-  source 'blog.conf.erb'
+#template '/etc/apache2/sites-enabled/blog.conf' do
+#  source 'blog.conf.erb'
+#end
+
+#workaround for NoMethodError: template
+execute 'copy blog.conf' do
+  command 'cp -u ~/chef-repo/cookbooks/install_middleman/templates/default/blog.conf.erb /etc/apache2/sites-enabled/blog.conf'
 end
 
 #delete /etc/apache2/sites-enabled/000-default.conf
