@@ -11,6 +11,31 @@ end
 
 #Get Ruby dependencies
 execute 'Get ruby dependencies' do
-  command 'apt-get install build-essential libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev nodejs libsqlite3-dev sqlite3
+  command 'apt-get -y install build-essential libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev nodejs libsqlite3-dev sqlite3
 '
+end
+
+#execute "Make Ruby directories" do
+#  command "mkdir ~/ruby"
+#  ignore_failure true
+#  not_if do ::File.exists?('/usr/bin/ruby') end
+#end
+
+#Install Ruby
+execute 'Install ruby' do
+  command 'apt-get -y install ruby-full'
+end
+
+#Copy ruby to /usr/bin/
+execute 'copy ruby to /usr/bin/'
+  command cp /usr/local/bin/ruby /usr/bin/ruby
+  ignore_failure true
+  not_if do ::File.exists?('/usr/bin/ruby')
+end
+
+#Copy gen to /usr/bin/
+execute 'copy gem to /usr/bin/'
+  command cp /usr/local/bin/gem /usr/bin/gem
+  ignore_failure true
+  not_if do ::File.exists?('/usr/bin/gem')
 end
