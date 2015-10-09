@@ -39,3 +39,8 @@ execute 'copy gem to /usr/bin/' do
   ignore_failure true
   not_if do ::File.exists?('/usr/bin/gem') end
 end
+
+#Install apache
+execute 'Install ruby' do
+  command 'apt-get -y install apache2'
+end
