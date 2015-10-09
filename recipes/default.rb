@@ -27,15 +27,15 @@ execute 'Install ruby' do
 end
 
 #Copy ruby to /usr/bin/
-execute 'copy ruby to /usr/bin/'
-  command cp /usr/local/bin/ruby /usr/bin/ruby
+execute 'copy ruby to /usr/bin/' do
+  command 'cp /usr/local/bin/ruby /usr/bin/ruby'
   ignore_failure true
-  not_if do ::File.exists?('/usr/bin/ruby')
+  not_if do ::File.exists?('/usr/bin/ruby') end
 end
 
-#Copy gen to /usr/bin/
-execute 'copy gem to /usr/bin/'
-  command cp /usr/local/bin/gem /usr/bin/gem
+#Copy gem to /usr/bin/
+execute 'copy gem to /usr/bin/' do
+  command 'cp /usr/local/bin/gem /usr/bin/gem'
   ignore_failure true
-  not_if do ::File.exists?('/usr/bin/gem')
+  not_if do ::File.exists?('/usr/bin/gem') end
 end
