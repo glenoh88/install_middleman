@@ -52,8 +52,8 @@ service 'apache2' do
 end
 
 #enable some apache modules
-execute 'a2enmode' do
-  command 'a2enmode proxy_http rewrite '
+execute 'a2enmod' do
+  command 'a2enmod proxy_http rewrite '
 end
 
 #configure blog.conf
