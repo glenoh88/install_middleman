@@ -99,5 +99,10 @@ end
 
 # Install thin service
 execute 'thin install' do
-  command 'gem install thin'
+  command 'thin install'
+end
+
+#config thin defaults
+execute 'thin defaults' do
+  command '/usr/sbin/update-rc.d -f thin defaults'
 end
