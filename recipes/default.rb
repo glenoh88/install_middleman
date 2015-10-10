@@ -107,6 +107,11 @@ execute 'thin defaults' do
   command '/usr/sbin/update-rc.d -f thin defaults'
 end
 
+#configure blog.conf
+#template '/etc/blog.conf' do
+#  source 'blog.conf.erb'
+#end
+
 #workaround for NoMethodError: template
 execute '/etc/thin/blog.conf' do
   command 'cp -u ~/chef-repo/cookbooks/install_middleman/templates/default/blog.yml.erb /etc/init.d/thin/blog.conf'
