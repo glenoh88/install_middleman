@@ -82,32 +82,22 @@ execute 'Install git' do
   command 'apt-get -y install git'
 end
 
+#reset and clear repo
+execute 'delete repo' do
+  command 'rm -r ~/chef-repo/middleman-blog'
+end
+
 #clone repo
 execute 'clone repo' do
   command  'git clone https://github.com/learnchef/middleman-blog.git'
 end
 
 #goto folder
-execute 'goto middleman-blog'
-  command 'cd middleman-blog'
-end
-
-#install blunder
-execute 'install blunder'
-  command 'gem install bundler'
-end
-
-#install project dependencies
-execute 'blunder project'
-  command 'blunder install'
+execute 'goto middleman-blog' do
+  command 'cd ~/chef-repo/middleman-blog'
 end
 
 # Install thin service
-execute 'thin install'
-  command 'thin install'
-end
-
-#config thin defaults
-execute 'thin defaults'
-  command '/usr/sbin/update-rc.d -f thin defaults'
+execute 'thin install' do
+  command 'gem install thin'
 end
