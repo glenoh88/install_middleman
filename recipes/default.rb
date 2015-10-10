@@ -76,3 +76,32 @@ service 'apache2' do
   supports :status => true
   action :restart
 end
+
+#Install git-core
+execute 'Install git' do
+  command 'apt-get -y install git'
+end
+
+#clone repo
+execute 'clone repo' do
+  command  'git clone https://github.com/learnchef/middleman-blog.git'
+end
+
+#goto folder
+execute 'goto middleman-blog'
+  command 'cd middleman-blog'
+end
+
+#install blunder
+execute 'install blunder'
+  command 'gem install bundler'
+end
+
+#install project dependencies
+execute 'blunder project'
+  command 'blunder install'
+end
+
+# Install thin service
+thin install
+/usr/sbin/update-rc.d -f thin defaults
