@@ -94,7 +94,7 @@ end
 
 #goto folder
 execute 'goto middleman-blog' do
-  command 'cd ~/chef-repo/middleman-blog'
+  command 'cd ~/chef-repo/cookbooks/cookbooks/middleman-blog'
 end
 
 # Install thin service
