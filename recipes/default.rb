@@ -103,5 +103,11 @@ execute 'blunder project'
 end
 
 # Install thin service
-thin install
-/usr/sbin/update-rc.d -f thin defaults
+execute 'thin install'
+  command 'thin install'
+end
+
+#config thin defaults
+execute 'thin defaults'
+  command '/usr/sbin/update-rc.d -f thin defaults'
+end
