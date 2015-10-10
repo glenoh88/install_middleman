@@ -88,7 +88,6 @@ execute 'delete repo' do
   not_if do ::File.exists?('~/chef-repo/middleman-blog') end
 end
 
-
 #clone repo
 execute 'clone repo' do
   command  'git clone https://github.com/learnchef/middleman-blog.git'
@@ -96,7 +95,7 @@ end
 
 #goto folder
 execute 'goto middleman-blog' do
-  command 'cd ~/chef-repo/cookbooks/cookbooks/middleman-blog'
+  command 'cd ~/middleman-blog'
 end
 
 # Install thin service
