@@ -85,7 +85,9 @@ end
 #reset and clear repo
 execute 'delete repo' do
   command 'rm -r ~/chef-repo/middleman-blog'
+  not_if do ::File.exists?('~/chef-repo/middleman-blog') end
 end
+
 
 #clone repo
 execute 'clone repo' do
