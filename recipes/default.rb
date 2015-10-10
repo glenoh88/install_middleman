@@ -85,6 +85,7 @@ end
 #reset and clear repo
 execute 'delete repo' do
   command 'rm -r ~/chef-repo/middleman-blog' do
+    ignore_failure true
   not_if do ::File.exists?('~/chef-repo/middleman-blog') end
 end
 
